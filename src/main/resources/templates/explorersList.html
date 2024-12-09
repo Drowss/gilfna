@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exploradores</title>
+</head>
+<body>
+<h1>Lista de Exploradores</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nickname</th>
+        <th>Nivel</th>
+        <th>Email</th>
+        <th>Acción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="explorer : ${explorers}">
+        <td th:text="${explorer.nickname}"></td>
+        <td th:text="${explorer.level}"></td>
+        <td th:text="${explorer.email}"></td>
+        <td>
+            <a th:href="@{/weapon/explorer/{id}/weapon(id=${explorer.id})}">
+                Ver Arma
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

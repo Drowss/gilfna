@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Misión</title>
+</head>
+<body>
+<h2>Agregar Misión</h2>
+
+<form th:action="@{/weapon/mission/save}" th:object="${mission}" method="post">
+    <label for="name">Nombre de la Misión:</label>
+    <input type="text" th:field="*{name}" id="name" required/><br><br>
+
+    <label for="description">Descripción:</label>
+    <input type="text" th:field="*{description}" id="description" required/><br><br>
+
+    <label for="status">Estado:</label>
+    <select th:field="*{status}" id="status" required>
+        <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"></option>
+    </select><br><br>
+
+    <label for="type">Tipo:</label>
+    <select th:field="*{type}" id="type" required>
+        <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+    </select><br><br>
+
+    <label for="initialDate">Fecha de Inicio:</label>
+    <input type="date" th:field="*{initialDate}" id="initialDate" required/><br><br>
+
+    <label for="finishDate">Fecha de Finalización:</label>
+    <input type="date" th:field="*{finishDate}" id="finishDate" required/><br><br>
+
+    <button type="submit">Guardar Misión</button>
+</form>
+
+<p th:if="${successMessage}" th:text="${successMessage}"></p>
+</body>
+</html>

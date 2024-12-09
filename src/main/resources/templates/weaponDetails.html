@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del Arma</title>
+</head>
+<body>
+<h1>Detalles del Arma</h1>
+
+<p><strong>Daño Base:</strong> <span th:text="${weapon.baseDamage}"></span></p>
+<p><strong>Descripción:</strong> <span th:text="${weapon.description}"></span></p>
+<p><strong>Fecha de Forja:</strong> <span th:text="${weapon.forgedDate}"></span></p>
+<p><strong>¿Droppable?:</strong> <span th:text="${weapon.droppable ? 'Sí' : 'No'}"></span></p>
+
+<h2>Enhancements Asociados:</h2>
+<a th:href="@{/weapon/{id}/enhancements(id=${weapon.id})}">Ver Enhancements</a>
+
+<h2>Agregar Enhancement</h2>
+<form th:action="@{/weapon/explorer/{id}/weapon/enhancement(id=${weapon.id})}" method="post">
+    <!-- Esta línea usa el id del arma -->
+    <input type="hidden" name="weaponId" th:value="${weapon.id}" />
+
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required /><br><br>
+
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" name="description" required /><br><br>
+
+    <label for="extraDamage">Daño Extra:</label>
+    <input type="number" id="extraDamage" name="extraDamage" required /><br><br>
+
+    <label for="droppable">¿Droppable?:</label>
+    <select id="droppable" name="droppable">
+        <option value="true">Sí</option>
+        <option value="false">No</option>
+    </select><br><br>
+
+    <label for="levelRequirement">Requisito de Nivel:</label>
+    <input type="number" id="levelRequirement" name="levelRequirement" required /><br><br>
+
+    <button type="submit">Agregar Enhancement</button>
+</form>
+
+<!-- Enlace para volver a la lista de exploradores -->
+<a href="/weapon/explorers">Volver a la Lista de Exploradores</a>
+</body>
+</html>

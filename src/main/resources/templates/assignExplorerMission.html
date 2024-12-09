@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Misión</title>
+</head>
+<body>
+<h1>Asignar Misión a Explorador</h1>
+
+<!-- Mensaje de éxito -->
+<p th:if="${successMessage}" th:text="${successMessage}"></p>
+
+<!-- Formulario para asignar misión -->
+<form action="#" th:action="@{/weapon/assign}" method="post">
+    <label for="explorer">Seleccionar Explorador:</label>
+    <select name="explorerId" id="explorer">
+        <option th:each="explorer : ${explorers}"
+                th:value="${explorer.id}"
+                th:text="${explorer.nickname}"></option>
+    </select>
+
+    <label for="mission">Seleccionar Misión:</label>
+    <select name="missionId" id="mission">
+        <option th:each="mission : ${missions}"
+                th:value="${mission.id}"
+                th:text="${mission.name}"></option>
+    </select>
+
+    <button type="submit">Asignar Misión</button>
+</form>
+</body>
+</html>

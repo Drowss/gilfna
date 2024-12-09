@@ -1,0 +1,36 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhancements del arma</title>
+</head>
+<body>
+<p>Descripción: <span th:text="${weapon.description}"></span></p>
+
+<h2>Enhancements Asociados:</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Daño Extra</th>
+        <th>Nivel Requerido</th>
+        <th>Droppable</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterar sobre los enhancements -->
+    <tr th:each="enhancement : ${enhancements}">
+        <td th:text="${enhancement.name}"></td>
+        <td th:text="${enhancement.description}"></td>
+        <td th:text="${enhancement.extraDamage}"></td>
+        <td th:text="${enhancement.levelRequirement}"></td>
+        <td th:text="${enhancement.droppable}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/weapon">Volver a la lista de armas</a>
+</body>
+</html>

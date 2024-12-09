@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Misiones</title>
+</head>
+<body>
+<h2>Misiones Registradas</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Tipo</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Finalización</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="mission : ${missions}">
+        <td th:text="${mission.name}"></td>
+        <td th:text="${mission.description}"></td>
+        <td th:text="${mission.status}"></td>
+        <td th:text="${mission.type}"></td>
+        <td th:text="${mission.initialDate}"></td>
+        <td th:text="${mission.finishDate}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/mission/create">Crear Nueva Misión</a>
+</body>
+</html>

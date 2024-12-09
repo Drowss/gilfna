@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Explorer y Weapon</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="datetime-local"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Formulario para Registrar Explorer y su Weapon</h2>
+
+    <form th:action="@{/weapon/saveExplorerWeapon}" th:object="${explorerWeaponForm}" method="post">
+        <!-- Información del Explorer -->
+        <div class="form-group">
+            <h3>Explorer</h3>
+            <label for="nickname">Nickname:</label>
+            <input type="text" id="nickname" th:field="*{explorer.nickname}" placeholder="Ingrese nickname" required>
+            <div class="error" th:if="${#fields.hasErrors('explorer.nickname')}" th:errors="*{explorer.nickname}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="level">Level:</label>
+            <input type="number" id="level" th:field="*{explorer.level}" placeholder="Ingrese nivel" required>
+            <div class="error" th:if="${#fields.hasErrors('explorer.level')}" th:errors="*{explorer.level}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{explorer.email}" placeholder="Ingrese email" required>
+            <div class="error" th:if="${#fields.hasErrors('explorer.email')}" th:errors="*{explorer.email}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="experience">Experience:</label>
+            <input type="number" id="experience" th:field="*{explorer.experience}" placeholder="Ingrese experiencia" required>
+            <div class="error" th:if="${#fields.hasErrors('explorer.experience')}" th:errors="*{explorer.experience}"></div>
+        </div>
+
+        <!-- Información del Weapon -->
+        <div class="form-group">
+            <h3>Weapon</h3>
+            <label for="baseDamage">Base Damage:</label>
+            <input type="number" id="baseDamage" th:field="*{weapon.baseDamage}" placeholder="Ingrese base damage" required>
+            <div class="error" th:if="${#fields.hasErrors('weapon.baseDamage')}" th:errors="*{weapon.baseDamage}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" th:field="*{weapon.description}" placeholder="Ingrese descripción" required>
+            <div class="error" th:if="${#fields.hasErrors('weapon.description')}" th:errors="*{weapon.description}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="forgedDate">Forged Date:</label>
+            <input type="datetime-local" id="forgedDate" th:field="*{weapon.forgedDate}" required>
+            <div class="error" th:if="${#fields.hasErrors('weapon.forgedDate')}" th:errors="*{weapon.forgedDate}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="droppable">Droppable:</label>
+            <input type="checkbox" id="droppable" th:field="*{weapon.droppable}">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit">Registrar</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

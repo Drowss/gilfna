@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploradores de la Misión</title>
+</head>
+<body>
+<h1>Exploradores asignados a la Misión: <span th:text="${mission.name}"></span></h1>
+<ul>
+    <li th:each="explorer : ${explorers}">
+        <span th:text="${explorer.nickname}"></span> - <span th:text="${explorer.level}"></span>
+    </li>
+</ul>
+<a th:href="@{/weapon/missions}">Volver a la lista de misiones</a>
+</body>
+</html>
